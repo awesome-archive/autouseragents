@@ -14,7 +14,7 @@ Usage Example
 
 .. code:: python
 
-    >>> from auto_user_agents import AutoUserAgents
+    >>> from autouseragents.auto_user_agents import AutoUserAgents
     >>> mua = AutoUserAgents()
     >>> mua.random_agent()
     {'User-Agent': 'Mozilla/5.0 (X11; Linux i686; rv:2.0b3pre) Gecko/20100731 Firefox/4.0b3pre'}
