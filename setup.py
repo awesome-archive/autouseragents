@@ -2,7 +2,7 @@
 # @Author: broono
 # @Date:   2016-04-10
 # @Last Modified by:   broono
-# @Last Modified time: 2016-04-10
+# @Last Modified time: 2016-04-11
 
 
 import codecs
@@ -27,7 +27,7 @@ KEYWORDS = "python user-agent generator faker"
 AUTHOR = "Broono"
 AUTHOR_EMAIL = "tosven.broono@gmail.com"
 URL = "https://github.com/brunobell/python-auto-user-agents"
-VERSION = "0.1"
+VERSION = "0.2"
 LICENSE = "MIT"
 
 setup(
@@ -36,6 +36,9 @@ setup(
     description=DESCRIPTION,
     long_description=LONG_DESCRIPTION,
     classifiers=[
+        'Development Status :: 3 - Alpha',
+        'Intended Audience :: Developers',
+        'Topic :: Software Development :: Libraries :: Python Modules',
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python',
         'Intended Audience :: Developers',

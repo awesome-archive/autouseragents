@@ -33,7 +33,7 @@ Use pip:
 
 .. code:: shell
 
-    $ pip install -U auto_user_agents
+    $ pip install autouseragents
 
 
 Documentation
