@@ -80,7 +80,7 @@ Any suggestions, never hesitate to tell me.
     def random_agent(self):
         length = len(self.AGENTS)
         random_id = random.randint(0, length - 1)
-        return self.AGENTS[random_id]  # here we go :P
+        return {"User-Agent": self.AGENTS[random_id]}  # here we go :P
 
     # parse agents list
     def parse_agents(self):
