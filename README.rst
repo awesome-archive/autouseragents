@@ -33,13 +33,13 @@ Use pip:
 
 .. code:: shell
 
-    $ pip install -U auto_user_agent
+    $ pip install -U auto_user_agents
 
 
 Documentation
 -------------
 
-Documentation is available at https://github.com/brunobell/python-auto-user-agents/README.rst
+Documentation is available at https://github.com/brunobell/python-auto-user-agents/blob/master/README.rst
 
 
 Contribution
