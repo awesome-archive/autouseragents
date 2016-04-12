@@ -2,17 +2,16 @@
 # @Author: broono
 # @Date:   2016-04-10
 # @Last Modified by:   broono
-# @Last Modified time: 2016-04-11
+# @Last Modified time: 2016-04-12
 
 
 import codecs
 import os
-import sys
 
 try:
-    from setuptools import setup
+    from setuptools import setup, find_packages
 except:
-    from distutils.core import setup
+    from distutils.core import setup, find_packages
 
 
 def read(fname):
@@ -20,14 +19,14 @@ def read(fname):
 
 
 NAME = "autouseragents"
-PACKAGES = ["autouseragents", ]
+PACKAGES = find_packages()
 DESCRIPTION = "A simple script to easily generate browser/robot User-Agent."
 LONG_DESCRIPTION = read("README.rst")
 KEYWORDS = "python user-agent generator faker"
 AUTHOR = "Broono"
 AUTHOR_EMAIL = "tosven.broono@gmail.com"
 URL = "https://github.com/brunobell/python-auto-user-agents"
-VERSION = "0.2"
+VERSION = "0.3"
 LICENSE = "MIT"
 
 setup(
