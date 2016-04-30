@@ -64,13 +64,22 @@ Any suggestions, never hesitate to tell me.
                 self.BROWSER_CACHED = False
             if self.CRAWLER_CACHED:
                 self.CRAWLER_CACHED = False
-            os.remove(self.CACHED_FILE)  # remove cached file
+            if os.path.exists(self.CACHED_FILE):
+                try:
+                    os.remove(self.CACHED_FILE)  # remove cached file
+                except Exception, e:
+                    pass
             self.CACHED = False  # set overall cache status to False
             # reset agent type on module leve
             self.AGENT_TYPE = self.set_agent_type(agent_type)
             # reset corresponding cache file name
             self.CACHED_FILE = os.path.join(
                 os.getcwd(), self.AGENT_TYPE.lower() + ".txt")
+            if os.path.exists(self.CACHED_FILE):
+                try:
+                    os.remove(self.CACHED_FILE)  # remove cached file
+                except Exception, e:
+                    pass
             self.AGENTS = self.parse_agents()  # let's roll :D
         else:  # if not cached then no need to reset
             print "{}.txt file not cached".format(self.CACHED_FILE)

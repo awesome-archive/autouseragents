@@ -20,13 +20,14 @@ def read(fname):
 
 NAME = "autouseragents"
 PACKAGES = find_packages()
+REQUIREMENTS = ["requests", "bs4"]
 DESCRIPTION = "A simple script to easily generate browser/robot User-Agent."
 LONG_DESCRIPTION = read("README.rst")
 KEYWORDS = "python user-agent generator faker"
 AUTHOR = "Broono"
 AUTHOR_EMAIL = "tosven.broono@gmail.com"
 URL = "https://github.com/brunobell/python-auto-user-agents"
-VERSION = "0.3"
+VERSION = "0.4"
 LICENSE = "MIT"
 
 setup(
@@ -51,4 +52,5 @@ setup(
     packages=PACKAGES,
     include_package_data=True,
     zip_safe=True,
+    install_requires=REQUIREMENTS,
 )
