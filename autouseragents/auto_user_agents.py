@@ -51,7 +51,7 @@ Any suggestions, never hesitate to tell me.
         if agent_type.capitalize() in self.AGENTS_URLS.keys():
             return agent_type.capitalize()
         else:
-            print "agent_type must be in ['browserlist','crawlerlist']"
+            print("agent_type must be in ['browserlist','crawlerlist']")
             raise TypeError
 
     # a fast way to reset/refresh the agent list file,
@@ -82,7 +82,7 @@ Any suggestions, never hesitate to tell me.
                     pass
             self.AGENTS = self.parse_agents()  # let's roll :D
         else:  # if not cached then no need to reset
-            print "{}.txt file not cached".format(self.CACHED_FILE)
+            print("{}.txt file not cached".format(self.CACHED_FILE))
             raise IOError
 
     # believe me it's really simple, just randomly choose one item and return
@@ -121,4 +121,4 @@ Any suggestions, never hesitate to tell me.
 
 if __name__ == '__main__':
     myagent = AutoUserAgents()
-    print myagent.random_agent()
+    print(myagent.random_agent())
