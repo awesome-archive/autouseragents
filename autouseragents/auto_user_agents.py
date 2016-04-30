@@ -67,7 +67,7 @@ Any suggestions, never hesitate to tell me.
             if os.path.exists(self.CACHED_FILE):
                 try:
                     os.remove(self.CACHED_FILE)  # remove cached file
-                except Exception, e:
+                except Exception as e:
                     pass
             self.CACHED = False  # set overall cache status to False
             # reset agent type on module leve
@@ -78,7 +78,7 @@ Any suggestions, never hesitate to tell me.
             if os.path.exists(self.CACHED_FILE):
                 try:
                     os.remove(self.CACHED_FILE)  # remove cached file
-                except Exception, e:
+                except Exception as e:
                     pass
             self.AGENTS = self.parse_agents()  # let's roll :D
         else:  # if not cached then no need to reset

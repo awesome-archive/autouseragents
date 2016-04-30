@@ -23,11 +23,11 @@ PACKAGES = find_packages()
 REQUIREMENTS = ["requests", "bs4"]
 DESCRIPTION = "A simple script to easily generate browser/robot User-Agent."
 LONG_DESCRIPTION = read("README.rst")
-KEYWORDS = "python user-agent generator faker"
+KEYWORDS = "ua user-agent faker headers"
 AUTHOR = "Broono"
 AUTHOR_EMAIL = "tosven.broono@gmail.com"
 URL = "https://github.com/brunobell/python-auto-user-agents"
-VERSION = "0.5"
+VERSION = "0.5.1"
 LICENSE = "MIT"
 
 setup(
