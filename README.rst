@@ -1,9 +1,9 @@
 ================
-auto_user_agents
+autouseragents
 ================
 
 
-What is auto_user_agents module for?
+What is autouseragents module for?
 ------------------------------------
 
 This module is for generating random, valid web navigator's User-Agent HTTP headers.
@@ -14,7 +14,7 @@ Usage Example
 
 .. code:: python
 
-    >>> from autouseragents.auto_user_agents import AutoUserAgents
+    >>> from autouseragents.autouseragents import AutoUserAgents
     >>> mua = AutoUserAgents()
     >>> mua.random_agent()
     {'User-Agent': 'Mozilla/5.0 (X11; Linux i686; rv:2.0b3pre) Gecko/20100731 Firefox/4.0b3pre'}
@@ -33,17 +33,17 @@ Use pip:
 
 .. code:: shell
 
-    $ pip install autouseragents
+    $ pip install -U autouseragents
 
 
 Documentation
 -------------
 
-Documentation is available at https://github.com/brunobell/python-auto-user-agents/blob/master/README.rst
+Documentation is available at https://github.com/brunobell/autouseragents/blob/master/README.rst
 
 
 Contribution
 ============
 
-Use github to submit bug,fix or wish request: https://github.com/brunobell/python-auto-user-agents/issues
+Use github to submit bug,fix or wish request: https://github.com/brunobell/autouseragents/issues
 

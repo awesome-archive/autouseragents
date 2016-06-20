@@ -26,8 +26,8 @@ LONG_DESCRIPTION = read("README.rst")
 KEYWORDS = "ua user-agent faker headers"
 AUTHOR = "Broono"
 AUTHOR_EMAIL = "tosven.broono@gmail.com"
-URL = "https://github.com/brunobell/python-auto-user-agents"
-VERSION = "0.5.1"
+URL = "https://github.com/brunobell/autouseragents"
+VERSION = "0.5.2"
 LICENSE = "MIT"
 
 setup(
@@ -50,6 +50,7 @@ setup(
     url=URL,
     license=LICENSE,
     packages=PACKAGES,
+    platforms=['any'],
     include_package_data=True,
     zip_safe=True,
     install_requires=REQUIREMENTS,
