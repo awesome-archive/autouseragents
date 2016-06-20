@@ -27,7 +27,7 @@ KEYWORDS = "ua user-agent faker headers"
 AUTHOR = "Broono"
 AUTHOR_EMAIL = "tosven.broono@gmail.com"
 URL = "https://github.com/brunobell/autouseragents"
-VERSION = "0.5.2"
+VERSION = "0.5.3"
 LICENSE = "MIT"
 
 setup(
