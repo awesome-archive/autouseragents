@@ -90,4 +90,4 @@ ENV/
 # User generated txt data file in app root
 *.txt
 test*
-.idea
+.idea/
