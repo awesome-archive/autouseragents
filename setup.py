@@ -2,7 +2,7 @@
 # @Author: broono
 # @Date:   2016-04-10
 # @Last Modified by:   broono
-# @Last Modified time: 2016-04-12
+# @Last Modified time: 2016-06-23
 
 
 import codecs
@@ -20,14 +20,14 @@ def read(fname):
 
 NAME = "autouseragents"
 PACKAGES = find_packages()
-REQUIREMENTS = ["requests", "bs4"]
+REQUIREMENTS = ["requests", "bs4", "useragent", "self"]
 DESCRIPTION = "A simple script to easily generate browser/robot User-Agent."
 LONG_DESCRIPTION = read("README.rst")
 KEYWORDS = "ua user-agent faker headers"
 AUTHOR = "Broono"
 AUTHOR_EMAIL = "tosven.broono@gmail.com"
 URL = "https://github.com/brunobell/autouseragents"
-VERSION = "0.5.3"
+VERSION = "0.5.4"
 LICENSE = "MIT"
 
 setup(

@@ -8,8 +8,10 @@
 
 
 import os
+import useragent
 import random
 import requests
+from self import self
 from bs4 import BeautifulSoup
 
 
@@ -33,11 +35,12 @@ Any suggestions, never hesitate to tell me.
         self.AGENT_TYPE = self.set_agent_type(agent_type)
         self.CACHED_FILE = os.path.join(
             os.getcwd(), self.AGENT_TYPE.lower() + ".txt")
-        self.check_cached()
+        self._check_cached()
+        self.FILTERED = None
         self.AGENTS = self.parse_agents()
 
     #  check and set cache status
-    def check_cached(self):
+    def _check_cached(self):
         self.BROWSER_CACHED = True if os.path.exists(
             self.CACHED_FILE) else False
         self.CRAWLER_CACHED = True if os.path.exists(
@@ -57,18 +60,19 @@ Any suggestions, never hesitate to tell me.
     # a fast way to reset/refresh the agent list file,
     # can make an easy switch from one agent type to the other
     # agent_type can be"browserlist" or "crawlerlist"
+    @self
     def reset(self, agent_type="browserlist"):
         if self.CACHED:  # if cached then delete cache file and parse again
-            # set corresponding cache status to False
-            if self.BROWSER_CACHED:
-                self.BROWSER_CACHED = False
-            if self.CRAWLER_CACHED:
-                self.CRAWLER_CACHED = False
             if os.path.exists(self.CACHED_FILE):
                 try:
                     os.remove(self.CACHED_FILE)  # remove cached file
                 except Exception as e:
                     pass
+            # set corresponding cache status to False
+            if self.BROWSER_CACHED:
+                self.BROWSER_CACHED = False
+            if self.CRAWLER_CACHED:
+                self.CRAWLER_CACHED = False
             self.CACHED = False  # set overall cache status to False
             # reset agent type on module leve
             self.AGENT_TYPE = self.set_agent_type(agent_type)
@@ -80,16 +84,46 @@ Any suggestions, never hesitate to tell me.
                     os.remove(self.CACHED_FILE)  # remove cached file
                 except Exception as e:
                     pass
-            self.AGENTS = self.parse_agents()  # let's roll :D
+            self.AGENTS = self.parse_agents()
         else:  # if not cached then no need to reset
             print("{}.txt file not cached".format(self.CACHED_FILE))
-            raise IOError
+            self.__init__(agent_type=agent_type)  # no need to raise error here
+            print("Made cache file.")
+
+    # the filter trick, thanks to @russianidiot for the self library
+    # the class object itself will be returned
+    # this method is aimed to filter out agents only
+    @self
+    def filter(self, key, value):
+        assert isinstance(key, str) and isinstance(value, str)
+        if self.FILTERED is None:
+            self.FILTERED = self.AGENTS
+        temp = []
+        key, value = key.lower(), value.lower()
+        if key and isinstance(key, str):
+            for agent in self.FILTERED:
+                ua = useragent.detect(agent)
+                if ua[key]["family"]:
+                    t = ua[key]["family"].lower()
+                    a, b = t.split(" ")[0], value.split(" ")[0]
+                    if a == b:
+                        temp.append(agent)
+            self.FILTERED = temp
+
+    # this is where random choosing happens
+    def _random(self, agents):
+        if agents and len(agents) > 0:
+            return random.choice(agents)
 
     # believe me it's really simple, just randomly choose one item and return
     def random_agent(self):
-        length = len(self.AGENTS)
-        random_id = random.randint(0, length - 1)
-        return {"User-Agent": self.AGENTS[random_id]}  # here we go :P
+        if self.FILTERED is not None:
+            # reset the FILTERED agents list after each filter operation
+            # followed by random_agent call, and pass filtered to _random
+            temp = self.FILTERED
+            self.FILTERED = None
+            return self._random(temp)
+        return self._random(self.AGENTS)
 
     # parse agents list
     def parse_agents(self):
@@ -116,9 +150,11 @@ Any suggestions, never hesitate to tell me.
                     agent = x.a.getText()  # agent name
                     f.write(agent + "\n")
                     agent_list.append(agent)  # agent list to return
-            self.check_cached()  # recheck cache status
+            self._check_cached()  # recheck cache status
         return agent_list  # we're done
 
 if __name__ == '__main__':
     myagent = AutoUserAgents()
-    print(myagent.random_agent())
+    print(myagent.filter("os", "linux").filter("browser", "firefox").random_agent())
+    print(myagent.filter("os", "windows").filter("browser", "chrome").random_agent())
+    print(myagent.filter("os", "mac").filter("browser", "safari").random_agent())
